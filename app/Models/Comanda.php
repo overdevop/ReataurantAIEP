@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Comanda extends Model
 {
     use HasFactory;
+
+    protected $table = 'comandas';
+
+    protected $fillable = [
+        'numeroComanda',
+        'estadoComanda',
+        'totalComanda',
+        'idMesa',
+    ];
+
+
 }

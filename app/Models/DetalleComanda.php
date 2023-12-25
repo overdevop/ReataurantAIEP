@@ -7,5 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class DetalleComanda extends Model
 {
-    use HasFactory;
+    protected $table = 'detalles_comandas';
+
+    protected $fillable = [
+        'cantidadProducto',
+        'totalLinea',
+        'idProducto',
+    ];
 }

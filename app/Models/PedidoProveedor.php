@@ -7,5 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class PedidoProveedor extends Model
 {
-    use HasFactory;
+    protected $table = 'pedidos_proveedores';
+
+    protected $fillable = [
+        'numeroPedido',
+        'cantidadProducto',
+        'idProducto',
+    ];
 }
