@@ -18,5 +18,8 @@ class Comanda extends Model
         'idMesa',
     ];
 
-
+    public function mesa()
+    {
+        return $this->belongsTo(Mesa::class, 'idMesa');
+    }
 }

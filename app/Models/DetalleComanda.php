@@ -14,4 +14,9 @@ class DetalleComanda extends Model
         'totalLinea',
         'idProducto',
     ];
+
+    public function producto()
+    {
+        return $this->belongsTo(Producto::class, 'idProducto');
+    }
 }
