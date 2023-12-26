@@ -25,7 +25,7 @@ class LoginController extends Controller
 
         // Autenticación fallida
         return back()->withErrors([
-            'email' => 'Las credenciales proporcionadas son incorrectas.',
+            'nombre' => 'Las credenciales proporcionadas son incorrectas.',
         ]);
     }
 }
