@@ -3,7 +3,7 @@
 @section('contenido')
     <div class="col-12 m3">
 
-        <h1>Crear usuario</h1>
+        <h3>Crear usuario</h3>
         <form action="{{ route('storeUser') }}" method="POST" class="">
             @csrf
             <div class="row">

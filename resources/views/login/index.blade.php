@@ -44,12 +44,12 @@
                                     <form class="user" method="POST" action="{{ route('login') }}">
                                         @csrf
                                         <div class="form-group">
-                                            <input type="text" class="form-control form-control-user"
-                                                id="nombreUsuario" placeholder="Nombre de Usuario">
+                                            <input type="text" class="form-control form-control-user" id="nombre"
+                                                name="nombre" placeholder="Nombre de Usuario">
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user" id="password"
-                                                placeholder="Password">
+                                                name="password" placeholder="Password">
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
@@ -61,6 +61,11 @@
                                         <button class="btn form-control btn-primary">Comenzar</button>
                                     </form>
                                     <hr>
+                                    @error('message')
+                                        <div class="alert alert-danger" role="alert">
+                                            E-Mail o Password Incorrectos.
+                                        </div>
+                                    @enderror
                                 </div>
                             </div>
                         </div>

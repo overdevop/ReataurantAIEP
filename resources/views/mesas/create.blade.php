@@ -9,8 +9,9 @@
                     {{ Session::get('error') }}
                 </div>
             @endif
-            <div class="col-12 mb-3">
-                <a href="{{ route('viewMesas') }}" class="btn btn-primary"><i class="fa-solid fa-arrow-left"></i> Volver</a>
+            <div class="col-8 mb-3 d-flex justify-content-end">
+                <a href="{{ route('viewMesas') }}" class="btn btn-primary btn-sm"><i class="fa-solid fa-arrow-left"></i>
+                    Volver</a>
             </div>
         </div>
         <div class="col-12">

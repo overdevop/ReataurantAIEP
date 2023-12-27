@@ -16,16 +16,25 @@ class LoginController extends Controller
 
     public function iniciarSesion(Request $request)
     {
-        $credenciales = $request->only('nombre', 'password');
 
-        if (Auth::attempt($credenciales)) {
-            // Autenticación exitosa
-            return redirect()->intended('dashboard');
-        }
 
-        // Autenticación fallida
-        return back()->withErrors([
-            'nombre' => 'Las credenciales proporcionadas son incorrectas.',
+        //$remember = request()->filled('remember');
+        $usuario = request()->validate([
+            'nombre' => ['required', 'string'],
+            'password' => ['required', 'string']
         ]);
+
+        //return $usuario;
+
+        if (Auth::attempt($usuario)) {
+
+            request()->session()->regenerate();
+
+            return redirect()->intended('escritorio');
+        } else {
+            return back()->withErrors([
+                'message' => 'El E-Mail o Contraseña son incorrectos'
+            ]);
+        }
     }
 }

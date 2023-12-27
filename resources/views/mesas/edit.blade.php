@@ -2,8 +2,10 @@
 
 @section('contenido')
     <div class="row">
-        <div class="col-12">
-            Editar Mesa
+        <div class="col-12 m-3">
+            <h3>
+                Editar Mesa # {{ $mesa->numeroMesa }}
+            </h3>
         </div>
     </div>
 
@@ -27,7 +29,7 @@
                     </select>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Guardar</button>
+                <button type="submit" class="btn btn-primary form-control mt-1 col-4">Guardar</button>
             </form>
         </div>
     </div>

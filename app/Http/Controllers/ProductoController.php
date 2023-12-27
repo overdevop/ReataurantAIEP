@@ -13,6 +13,8 @@ class ProductoController extends Controller
     public function index()
     {
         //
+        $productos = Producto::Paginate('10');
+        return view('productos.index', compact('productos'));
     }
 
     /**
@@ -21,6 +23,7 @@ class ProductoController extends Controller
     public function create()
     {
         //
+        return view('productos.create');
     }
 
     /**
@@ -29,6 +32,17 @@ class ProductoController extends Controller
     public function store(Request $request)
     {
         //
+        if ($request->nombreProducto == null || $request->precioProducto == null || $request->stockProducto == null) {
+            return redirect()->route('viewProductos')->with('error', 'No se pudo crear el producto, completa todos los datos');
+        }
+
+        $producto = new Producto();
+        $producto->nombreProducto = $request->nombreProducto;
+        $producto->precioProducto = $request->precioProducto;
+        $producto->stockProducto = $request->stockProducto;
+        $producto->save();
+
+        return redirect()->route('viewProductos')->with('success', 'Producto creado correctamente');
     }
 
     /**

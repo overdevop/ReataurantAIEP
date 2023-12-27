@@ -78,7 +78,12 @@
                     <span>Mesas</span>
                 </a>
             </li>
-
+            <li class="nav-item m-0">
+                <a class="nav-link collapsed" href="{{ route('viewProductos') }}">
+                    <i class="fa-solid fa-store"></i>
+                    <span>Productos</span>
+                </a>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

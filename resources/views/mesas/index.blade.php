@@ -4,8 +4,10 @@
     <div class="row">
         <div class="col-12">
             <h1>Mesas</h1>
-            <div class="col-12 mb-3">
-                <a href="{{ route('createMesa') }}" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Crear mesa</a>
+            <div class="col-12 mb-3 d-flex justify-content-end">
+                <a href="{{ route('createMesa') }}" class="btn btn-primary btn-sm">
+                    <i class="fa-solid fa-plus"></i> Crear mesa
+                </a>
             </div>
             <table class="table table-striped table-hover">
                 <thead>

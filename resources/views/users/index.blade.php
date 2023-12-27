@@ -1,11 +1,12 @@
 @extends('layouts.plantilla')
 
 @section('contenido')
-    <h1>Usuarios</h1>
+    <h3>Usuarios</h3>
     <div class="col-12">
 
-        <div class="col-12 mb-3">
-            <a href="{{ route('createUser') }}" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Crear usuario</a>
+        <div class="col-12 mb-3 d-flex justify-content-end">
+            <a href="{{ route('createUser') }}" class="btn btn-primary btn-sm"><i class="fa-solid fa-plus"></i> Crear
+                usuario</a>
         </div>
 
         <table class="table">
