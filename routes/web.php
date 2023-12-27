@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MesaController;
 use App\Http\Controllers\UserController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -28,3 +29,10 @@ Route::get('escritorio', [DashboardController::class, 'index'])->name('dashboard
 Route::get('usuarios', [UserController::class, 'index'])->name('viewUsers');
 Route::get('crearUser', [UserController::class, 'create'])->name('createUser');
 Route::post('addUser', [UserController::class, 'store'])->name('storeUser');
+
+//mesas
+Route::get('mesas', [MesaController::class, 'index'])->name('viewMesas');
+Route::get('crearMesa', [MesaController::class, 'create'])->name('createMesa');
+Route::post('addMesa', [MesaController::class, 'store'])->name('storeMesa');
+Route::get('editarMesa{mesa}', [MesaController::class, 'edit'])->name('editMesa');
+Route::put('updateMesa{mesa}', [MesaController::class, 'update'])->name('updateMesa');

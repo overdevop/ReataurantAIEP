@@ -12,6 +12,7 @@
             <tr>
                 <th>ID</th>
                 <th>Nombre de usuario</th>
+                <th>Correo</th>
                 <th>Rol</th>
                 <th>Fecha Creacion</th>
                 <th>Acciones</th>
@@ -20,6 +21,7 @@
                 <tr>
                     <td>{{ $user->id }}</td>
                     <td>{{ $user->nombre }}</td>
+                    <td>{{ $user->email }}</td>
                     <td>{{ $user->rol->nombreRol }}</td>
                     <td>{{ $user->created_at }}</td>
                     <td>
@@ -30,5 +32,6 @@
                 </tr>
             @endforeach
         </table>
+        {{ $users->links() }}
     </div>
 @endsection

@@ -13,6 +13,8 @@ class MesaController extends Controller
     public function index()
     {
         //
+        $mesas = Mesa::paginate(10);
+        return view('mesas.index', ['mesas' => $mesas]);
     }
 
     /**
@@ -21,6 +23,7 @@ class MesaController extends Controller
     public function create()
     {
         //
+        return view('mesas.create');
     }
 
     /**
@@ -29,6 +32,20 @@ class MesaController extends Controller
     public function store(Request $request)
     {
         //
+        if ($request->estadoMesa == null || $request->estadoMesa == "" || $request->numeroMesa == null || $request->numeroMesa == "") {
+
+            return redirect()->route('createMesa')->with('error', 'Debe seleccionar un estado para la mesa');
+        }
+        // Verificar duplicidad del número de mesa
+        if (Mesa::where('numeroMesa', $request->numeroMesa)->exists()) {
+            return redirect()->route('createMesa')->with('error', 'El número de mesa ya existe');
+        }
+        $mesa = new Mesa();
+        $mesa->numeroMesa = $request->numeroMesa;
+        $mesa->estadoMEsa = $request->estadoMesa;
+        $mesa->save();
+
+        return redirect()->route('viewMesas');
     }
 
     /**
@@ -45,6 +62,7 @@ class MesaController extends Controller
     public function edit(Mesa $mesa)
     {
         //
+        return view('mesas.edit', ['mesa' => $mesa]);
     }
 
     /**
@@ -53,6 +71,9 @@ class MesaController extends Controller
     public function update(Request $request, Mesa $mesa)
     {
         //
+        $mesa->estadoMesa = $request->estadoMesa;
+        $mesa->save();
+        return redirect()->route('viewMesas');
     }
 
     /**
