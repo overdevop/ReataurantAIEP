@@ -23,7 +23,6 @@ Route::get('/', [LoginController::class, 'index']);
 
 Route::post('iniciarSesion', [LoginController::class, 'iniciarSesion'])->name('login');
 
-
 Route::get('escritorio', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 
 //users
