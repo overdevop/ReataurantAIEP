@@ -4,6 +4,18 @@
     <div class="row">
         <div class="col-12">
             <h3>Productos</h3>
+
+            @if (Session::has('error'))
+                <div class="alert alert-danger text-center">
+                    {{ Session::get('error') }}
+                </div>
+            @endif
+
+            @if (Session::has('success'))
+                <div class="alert alert-success text-center">
+                    {{ Session::get('success') }}
+                </div>
+            @endif
             <div class="col-12 mb-3 d-flex justify-content-end">
                 <a href="{{ route('createProducto') }}" class="btn btn-primary btn-sm">
                     <i class="fa-solid fa-plus"></i> Crear Producto

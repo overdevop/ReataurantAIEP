@@ -32,6 +32,7 @@ class ProductoController extends Controller
     public function store(Request $request)
     {
         //
+
         if ($request->nombreProducto == null || $request->precioProducto == null || $request->stockProducto == null) {
             return redirect()->route('viewProductos')->with('error', 'No se pudo crear el producto, completa todos los datos');
         }

@@ -51,6 +51,17 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider">
+            <div class="sidebar-heading">
+                ventas
+            </div>
+            <li class="nav-item m-0">
+                <a class="nav-link collapsed" href="{{ route('viewMesas') }}">
+                    <i class="fa-solid fa-ticket"></i>
+                    <span>Comanda</span>
+                </a>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider">
 
             <!-- Heading -->
             <div class="sidebar-heading">
