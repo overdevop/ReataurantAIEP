@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comanda;
+use App\Models\Mesa;
+use App\Models\Producto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ComandaController extends Controller
 {
@@ -24,7 +27,9 @@ class ComandaController extends Controller
     public function create()
     {
         //
-        return view('comandas.create');
+        $productos = Producto::all();
+        $mesas = Mesa::where('estadoMesa', 'Disponible')->get();
+        return view('comandas.create', compact('productos', 'mesas'));
     }
 
     /**
@@ -38,15 +43,22 @@ class ComandaController extends Controller
             return redirect()->route('viewComandas')->with('error', 'No se pudo crear la comanda, completa todos los datos');
         }
 
+        DB::transaction(function () use ($request) {
 
 
-        $nroComanda = rand(100, 99999);
-        $comanda = new Comanda();
-        $comanda->numeroComanda = $nroComanda;
-        $comanda->idMesa = $request->idMesa;
-        $comanda->estadoComanda = $request->estadoComanda;
-        $comanda->totalComanda = $request->totalComanda;
-        $comanda->save();
+            $comanda = Comanda::create([
+                $nroComanda = rand(100, 99999),
+
+                'numeroComanda' => $nroComanda,
+                'idMesa' => $request->idMesa,
+                'estadoComanda' => 'Pendiente',
+                'totalComanda' => $request->totalComanda,
+            ]);
+
+            foreach ($request->idProducto as $key => $value) {
+                $comanda->detalleComanda()->attach($value, ['cantidad' => $request->cantidad[$key]]);
+            }
+        });
 
         return redirect()->route('viewComandas')->with('success', 'Producto creado correctamente', compact('nroComanda'));
     }
