@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ComandaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MesaController;
@@ -42,3 +43,8 @@ Route::get('productos', [ProductoController::class, 'index'])->name('viewProduct
 Route::get('crearProducto', [ProductoController::class, 'create'])->name('createProducto')->middleware('auth');
 Route::post('addProducto', [ProductoController::class, 'store'])->name('storeProducto')->middleware('auth');
 Route::get('editarProducto{producto}', [ProductoController::class, 'edit'])->name('editProducto')->middleware('auth');
+
+//comandas
+Route::get('comandas', [ComandaController::class, 'index'])->name('viewComandas')->middleware('auth');
+Route::get('crearComanda', [ComandaController::class, 'create'])->name('createComanda')->middleware('auth');
+Route::post('addComanda', [ComandaController::class, 'store'])->name('storeComanda')->middleware('auth');

@@ -55,7 +55,7 @@
                 ventas
             </div>
             <li class="nav-item m-0">
-                <a class="nav-link collapsed" href="{{ route('viewMesas') }}">
+                <a class="nav-link collapsed" href="{{ route('viewComandas') }}">
                     <i class="fa-solid fa-ticket"></i>
                     <span>Comanda</span>
                 </a>

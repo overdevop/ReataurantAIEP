@@ -13,6 +13,9 @@ class ComandaController extends Controller
     public function index()
     {
         //
+
+        $comandas = Comanda::Paginate(10);
+        return view('comandas.index', compact('comandas'));
     }
 
     /**
@@ -21,6 +24,7 @@ class ComandaController extends Controller
     public function create()
     {
         //
+        return view('comandas.create');
     }
 
     /**
@@ -29,6 +33,22 @@ class ComandaController extends Controller
     public function store(Request $request)
     {
         //
+
+        if ($request->idMesa == null || $request->estadoComanda == null || $request->totalComanda == null) {
+            return redirect()->route('viewComandas')->with('error', 'No se pudo crear la comanda, completa todos los datos');
+        }
+
+
+
+        $nroComanda = rand(100, 99999);
+        $comanda = new Comanda();
+        $comanda->numeroComanda = $nroComanda;
+        $comanda->idMesa = $request->idMesa;
+        $comanda->estadoComanda = $request->estadoComanda;
+        $comanda->totalComanda = $request->totalComanda;
+        $comanda->save();
+
+        return redirect()->route('viewComandas')->with('success', 'Producto creado correctamente', compact('nroComanda'));
     }
 
     /**
