@@ -37,6 +37,7 @@ Route::get('crearMesa', [MesaController::class, 'create'])->name('createMesa')->
 Route::post('addMesa', [MesaController::class, 'store'])->name('storeMesa')->middleware('auth');
 Route::get('editarMesa{mesa}', [MesaController::class, 'edit'])->name('editMesa')->middleware('auth');
 Route::put('updateMesa{mesa}', [MesaController::class, 'update'])->name('updateMesa')->middleware('auth');
+Route::get('/mesas/{mesa}', [MesaController::class, 'destroy'])->name('eliminarMesa')->middleware('auth');
 
 //productos
 Route::get('productos', [ProductoController::class, 'index'])->name('viewProductos')->middleware('auth');
@@ -48,3 +49,6 @@ Route::get('editarProducto{producto}', [ProductoController::class, 'edit'])->nam
 Route::get('comandas', [ComandaController::class, 'index'])->name('viewComandas')->middleware('auth');
 Route::get('crearComanda', [ComandaController::class, 'create'])->name('createComanda')->middleware('auth');
 Route::post('addComanda', [ComandaController::class, 'store'])->name('storeComanda')->middleware('auth');
+Route::get('/producto{producto}', [ProductoController::class, 'edit'])->name('editarProducto')->middleware('auth');
+Route::put('/productos/{producto}', [ProductoController::class, 'update'])->name('updateProducto')->middleware('auth');
+Route::get('/productos/{producto}', [ProductoController::class, 'destroy'])->name('eliminarProducto')->middleware('auth');

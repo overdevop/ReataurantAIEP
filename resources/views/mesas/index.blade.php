@@ -4,6 +4,19 @@
     <div class="row">
         <div class="col-12">
             <h1>Mesas</h1>
+
+            @if (Session::has('error'))
+             <div class="alert alert-danger text-center">
+                {{ Session::get('error') }}
+                     </div>
+             @endif
+
+             @if (Session::has('success'))
+              <div class="alert alert-success text-center">
+                {{ Session::get('success') }}
+                     </div>
+            @endif
+
             <div class="col-12 mb-3 d-flex justify-content-end">
                 <a href="{{ route('createMesa') }}" class="btn btn-primary btn-sm">
                     <i class="fa-solid fa-plus"></i> Crear mesa
@@ -27,7 +40,7 @@
                             <td>{{ $mesa->updated_at }}</td>
                             <td>
                                 <a href="{{ route('editMesa', $mesa->id) }}"><i class="fa-solid fa-pen-to-square"></i></a> |
-                                <a href=""><i class="fa-solid fa-trash"></i></a>
+                                <a href="{{ route('eliminarMesa', $mesa->id) }}"><i class="fa-solid fa-trash"></i></a>
                             </td>
                         </tr>
                     @endforeach

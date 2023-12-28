@@ -38,11 +38,11 @@
                             <td>{{ $producto->precioProducto }}</td>
                             <td>{{ $producto->stockProducto }}</td>
                             <td>
-                                <a href="{{ route('editMesa', $producto->id) }}">
+                                <a href="{{ route('editarProducto', $producto->id) }}">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </a>
                                 |
-                                <a href="">
+                                <a href="{{ route('eliminarProducto', $producto->id) }}">
                                     <i class="fa-solid fa-trash"></i>
                                 </a>
                             </td>
