@@ -36,9 +36,10 @@
                         <tr>
 
                             <td>{{ $comanda->numeroComanda }}</td>
-                            <td>{{ $comanda->mesa->idMesa }}</td>
+                            <td>{{ $comanda->mesa->numeroMesa }}</td>
                             <td>{{ $comanda->estadoComanda }}</td>
                             <td>{{ $comanda->totalComanda }}</td>
+
                             <td>
                                 {{-- <a href="{{ route('editMesa', $producto->id) }}"> --}}
                                 <i class="fa-solid fa-pen-to-square"></i>

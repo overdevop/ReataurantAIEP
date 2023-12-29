@@ -18,6 +18,7 @@ class ComandaController extends Controller
         //
 
         $comandas = Comanda::Paginate(10);
+        //return $comandas;
         return view('comandas.index', compact('comandas'));
     }
 
@@ -39,10 +40,10 @@ class ComandaController extends Controller
     {
         //
 
-        if ($request->idMesa == null || $request->estadoComanda == null || $request->totalComanda == null) {
-            return redirect()->route('viewComandas')->with('error', 'No se pudo crear la comanda, completa todos los datos');
-        }
-
+        // if ($request->idMesa == null || $request->estadoComanda == null || $request->totalComanda == null) {
+        //     return redirect()->route('viewComandas')->with('error', 'No se pudo crear la comanda, completa todos los datos');
+        // }
+        return $request;
         DB::transaction(function () use ($request) {
 
 
